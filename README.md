@@ -33,15 +33,37 @@ Once this will be implemented the second part of this app will be the emotional 
 
 Recognize and manipulate faces from Python or from the command line with the world's simplest face recognition library.
 
-### Instagram API
+### ~~Instagram API~~
 
 
-The Instagram API Platform can be used to build non-automated, authentic, high-quality apps and services that:
+~~The Instagram API Platform can be used to build non-automated, authentic, high-quality apps and services that:~~
 
-* Help individuals share their own content with 3rd party apps.
-* Help brands and advertisers understand, manage their audience and media rights.
-* Help broadcasters and publishers discover content, get digital rights to media, and share media with proper 
-attribution.
+* ~~Help individuals share their own content with 3rd party apps.~~
+* ~~Help brands and advertisers understand, manage their audience and media rights.~~
+* ~~Help broadcasters and publishers discover content, get digital rights to media, and share media with proper 
+attribution.~~
+
+#### Updated (15/10/2019)
+
+
+Because of the public API of Instagram is no longer available, and only the enterprise one, which I cannot full access
+ due to  is private and only available for registered companies, is available for working with Instagram's data I'm
+ gonna use another third part python library (with MIT license) called instaloader. 
+ 
+ Here the official Instagram communicate:
+```
+UPDATE: Starting October 15, 2019, new client registration and permission review on Instagram API platform are 
+discontinued in favor of the Instagram Basic Display API.
+```
+
+
+### Instaloader
+
+* downloads public and private profiles, hashtags, user stories, feeds and saved media,
+* downloads comments, geotags and captions of each post,
+* automatically detects profile name changes and renames the target directory accordingly,
+* allows fine-grained customization of filters and where to store downloaded media.
+
 
 ### fer2013
 
@@ -58,9 +80,13 @@ face_recognition license:
 
 https://github.com/ageitgey/face_recognition/blob/master/LICENSE
 
-Instagram API license:
+~~Instagram API license:~~
 
-https://www.instagram.com/about/legal/terms/api/
+~~https://www.instagram.com/about/legal/terms/api/~~
+
+Instaloader license:
+
+https://github.com/instaloader/instaloader/blob/master/LICENSE
 
 Fer2013 license:
 
