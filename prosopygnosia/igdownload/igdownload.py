@@ -1,7 +1,8 @@
 import os
 from instaloader import instaloader, Profile
+from prosopygnosia.ai import ai
 
-NUMBER_OF_POSTS = 20
+NUMBER_OF_POSTS = 3
 
 
 def login(l):
@@ -19,18 +20,25 @@ def download(l, user):
     # Download of the NUMBER_OF_POSTS photos for each of our followees
     personal_profile = Profile.from_username(l.context, user)
     target_profiles = personal_profile.get_followees()
+    if not os.path.isdir('./profiledata'):
+        os.mkdir('./profiledata')
+    os.chdir('./profiledata')
     for profile in target_profiles:
-        profile_directory = 'profiledata_' + profile.username
+        profile_directory = profile.username
+        if os.path.isdir(profile_directory):
+            continue
         for i, posts in enumerate(profile.get_posts()):
             if i == NUMBER_OF_POSTS:
                 break
             l.download_post(posts, profile_directory)
         # Deletion f the jsons files (by now)
         dir_name = './' + profile_directory + '/'
-        test = os.listdir(dir_name)
-        for item in test:
+        dir = os.listdir(dir_name)
+        for item in dir:
             if not item.endswith(".jpg"):
                 os.remove(os.path.join(dir_name, item))
+            else:
+                ai.number_of_faces(os.path.realpath(open('./' + profile_directory + '/' + item).name))
 
 
 def main():
