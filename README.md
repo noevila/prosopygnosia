@@ -29,10 +29,6 @@ Once this will be implemented the second part of this app will be the emotional 
 ## Tools, libraries and important APIS that are gonna be used
 
 
-### face_recognition (python library)
-
-Recognize and manipulate faces from Python or from the command line with the world's simplest face recognition library.
-
 ### ~~Instagram API~~
 
 
@@ -75,10 +71,6 @@ Dataset for faces, it will be used for the emotional recognition.
 * **Noé Vila Muñoz** - [noevila](https://github.com/noevila)
 
 ## Licenses
-
-face_recognition license:
-
-https://github.com/ageitgey/face_recognition/blob/master/LICENSE
 
 ~~Instagram API license:~~
 

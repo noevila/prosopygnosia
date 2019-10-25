@@ -1,5 +1,5 @@
 session*
-profiledata_*
+profiledata*
 venv
 .idea
 .DS_Store

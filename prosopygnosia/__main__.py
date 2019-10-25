@@ -1,6 +1,5 @@
-from prosopygnosia import prosopygnosia
+from prosopygnosia.instagram_functions import instagram_download
 
 
 if __name__ == '__main__':
-    # prosopygnosia.run() #not implemented yet
-    prosopygnosia.init()
+    instagram_download.main()

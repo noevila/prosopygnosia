@@ -1,6 +1,6 @@
 import os
 from instaloader import instaloader, Profile
-from prosopygnosia.ai import ai
+from prosopygnosia.artificial_intelligence import ai_with_cv
 
 NUMBER_OF_POSTS = 3
 
@@ -28,17 +28,21 @@ def download(l, user):
         if os.path.isdir(profile_directory):
             continue
         for i, posts in enumerate(profile.get_posts()):
-            if i == NUMBER_OF_POSTS:
-                break
+            # if i == NUMBER_OF_POSTS:
+            #   break
             l.download_post(posts, profile_directory)
         # Deletion f the jsons files (by now)
         dir_name = './' + profile_directory + '/'
-        dir = os.listdir(dir_name)
-        for item in dir:
+        directory = os.listdir(dir_name)
+        for item in directory:
             if not item.endswith(".jpg"):
                 os.remove(os.path.join(dir_name, item))
             else:
-                ai.number_of_faces(os.path.realpath(open('./' + profile_directory + '/' + item).name))
+                ai_with_cv.number_of_faces(os.path.realpath(open('./' + profile_directory + '/' + item).name))
+        # I have to listdir again because of the deletions
+        directory = os.listdir(dir_name)
+        for item in directory:
+            ai_with_cv.crop_face(os.path.realpath(open('./' + profile_directory + '/' + item).name))
 
 
 def main():
