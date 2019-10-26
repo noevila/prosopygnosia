@@ -6,6 +6,7 @@ cascade = cv2.CascadeClassifier('./../../haarcascades/haarcascade_frontalface_al
 
 def cam_recognition():
     cam = cv2.VideoCapture(0)
+    cv2.startWindowThread()
     while True:
         exists, img = cam.read()
         if exists:
@@ -18,6 +19,7 @@ def cam_recognition():
             break
     cam.release()
     cv2.destroyAllWindows()
+    exit()
 
 
 def count_faces(image_path):
