@@ -24,6 +24,15 @@ if __name__ == '__main__':
             print("")
             # Not implemented yet
             os.system('clear')
+            session_name = '_' + input("Please, select a name for identify the session relationed with this dataset: ")
+            path = input("Please introduce the path of the dataset or drop it here: ")
+            dest = './profiledata' + session_name
+            if os.path.isdir(dest):
+                print("Not implemented yet")
+                # cargar sesión iniciada
+            else:
+                instagram_download.copy_images_from_path(path, dest)
+                instagram_download.clean_and_crop(os.path.abspath(dest))
         elif optionMenu == "3":
             print("")
             os.system('clear')
