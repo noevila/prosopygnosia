@@ -9,6 +9,7 @@ if __name__ == '__main__':
         print("\t1 - Download and train Instagram Dataset")
         print("\t2 - Select your own dataset")
         print("\t3 - Open Webcam Recognition")
+        print("\t4 - Testing")
         print("\t8 - Help")
         print("\t9 - Exit")
 
@@ -37,6 +38,15 @@ if __name__ == '__main__':
             print("")
             os.system('clear')
             ai_with_cv.cam_recognition()
+        elif optionMenu == "4":
+            print("")
+            os.system('clear')
+            dict = ai_with_cv.train_ai('profiledata')
+            ai_with_cv.cam_recognition_with_ai(dict)
+        elif optionMenu == "5":
+            print("")
+            os.system('clear')
+            instagram_download.clean_and_crop('../profiledata')
         elif optionMenu == "8":
             os.system('clear')
             input("Welcome to the help section. \n You must teach this program which of your friends is relationed with"
