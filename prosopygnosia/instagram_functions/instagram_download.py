@@ -28,10 +28,20 @@ def download(l, user):
         profile_directory = profile.username
         if os.path.isdir(profile_directory):
             continue
-        for i, posts in enumerate(profile.get_posts()):
-            # if i == NUMBER_OF_POSTS:
-            #   break
-            l.download_post(posts, profile_directory)
+        else:
+            os.mkdir(profile_directory)
+            for i, posts in enumerate(profile.get_posts()):
+                image_path = profile_directory + '/' + str(i)
+                if posts.typename == 'GraphImage':
+                    l.download_pic(image_path, posts.url, posts.date_local, filename_suffix=None, _attempt=1)
+                elif posts.typename == 'GraphVideo':
+                    continue
+                elif posts.typename == 'GraphSidecar':
+                    for j, node in enumerate(posts.get_sidecar_nodes()):
+                        l.download_pic(image_path + str(j), node.display_url, posts.date_local,
+                                       filename_suffix=None, _attempt=1)
+        just_crop(profile_directory)
+    os.chdir('../')
 
 
 def copy_images_from_path(src, dst, symlinks=False, ignore=None):
@@ -44,8 +54,18 @@ def copy_images_from_path(src, dst, symlinks=False, ignore=None):
             shutil.copy2(s, d)
 
 
-def clean_and_crop(path):
-    # Deletion f the jsons files
+def just_crop(path):
+    directory = os.listdir(path)
+    for item in directory:
+        if (ai_with_cv.number_of_faces(path + '/' + item)) != 1:
+            os.remove(path + '/' + item)
+    # I have to listdir again because of the deletions
+    directory = os.listdir(path)
+    for item in directory:
+        ai_with_cv.crop_face(path + '/' + item)
+
+
+def clean_crop(path):
     directory = os.listdir(path)
     os.chdir(path)
     for subdirectory in directory:
@@ -67,5 +87,4 @@ def main():
     l = instaloader.Instaloader()
     user = login(l)
     download(l, user)
-    clean_and_crop('../profiledata')
     return

@@ -19,7 +19,7 @@ if __name__ == '__main__':
         optionMenu = input("Please, insert your option >> ")
         if optionMenu == "1":
             print("")
-            os.system('clear')
+            #os.system('clear')
             instagram_download.main()
         elif optionMenu == "2":
             print("")
