@@ -25,15 +25,12 @@ if __name__ == '__main__':
             print("")
             # Not implemented yet
             os.system('clear')
-            session_name = '_' + input("Please, select a name for identify the session relationed with this dataset: ")
             path = input("Please introduce the path of the dataset or drop it here: ")
-            dest = './profiledata' + session_name
-            if os.path.isdir(dest):
-                print("Not implemented yet")
-                # cargar sesión iniciada
-            else:
-                instagram_download.copy_images_from_path(path, dest)
-                instagram_download.clean_and_crop(os.path.abspath(dest))
+            session_name = instagram_download.select_dataset()
+            dest = './profiledata/' + session_name
+            if not os.path.isdir(dest):
+                os.mkdir(dest)
+            instagram_download.copy_images_from_path(path, dest)
         elif optionMenu == "3":
             print("")
             os.system('clear')
@@ -41,8 +38,8 @@ if __name__ == '__main__':
         elif optionMenu == "4":
             print("")
             os.system('clear')
-            dict = ai_with_cv.train_ai('profiledata')
-            ai_with_cv.cam_recognition_with_ai(dict)
+            dictionary = ai_with_cv.train_ai('profiledata')
+            ai_with_cv.cam_recognition_with_ai(dictionary)
         elif optionMenu == "5":
             print("")
             os.system('clear')

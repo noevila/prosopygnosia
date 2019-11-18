@@ -3,7 +3,7 @@ import os
 import numpy as np
 from PIL import Image
 
-cascade = cv2.CascadeClassifier('./../../haarcascades/haarcascade_frontalface_alt.xml')
+cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_alt.xml')
 
 
 def cam_recognition():
@@ -51,7 +51,7 @@ def cam_recognition_with_ai(usernames_ids):
                 user_id, conf = recognizer.predict(greyscale[y:y + h, x:x + w])
                 # I select a trust for the similitude between faces
                 # WITH SMALL DATASETS THIS DOES NOT WORK WELL
-                if conf < 50:
+                if conf < 70:
                     name = usernames_ids[user_id]
                 else:
                     name = "unknown"
@@ -113,13 +113,15 @@ def train_ai(path):
         usernames_ids[internal_id] = ('@' + user[12:])
         # Iterate over images
         for image in user_path:
-            img = cv2.imread(image)
-            greyscale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            # With numpy and the greyscale I convert the image into an array
-            img_np = np.array(greyscale, 'uint8')
-            # Append into an array of faces
-            faces.append(img_np)
-            ids.append(internal_id)
+            if ".jpg" in image:
+                print(image)
+                img = cv2.imread(image)
+                greyscale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                # With numpy and the greyscale I convert the image into an array
+                img_np = np.array(greyscale, 'uint8')
+                # Append into an array of faces
+                faces.append(img_np)
+                ids.append(internal_id)
     # Now with  the array of images the module can work
     recognizer.train(faces, np.array(ids))
     recognizer.save('trained.yml')

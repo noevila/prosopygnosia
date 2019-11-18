@@ -57,30 +57,34 @@ def copy_images_from_path(src, dst, symlinks=False, ignore=None):
 def just_crop(path):
     directory = os.listdir(path)
     for item in directory:
-        if (ai_with_cv.number_of_faces(path + '/' + item)) != 1:
-            os.remove(path + '/' + item)
+        ai_with_cv.number_of_faces(path + '/' + item)
     # I have to listdir again because of the deletions
     directory = os.listdir(path)
     for item in directory:
         ai_with_cv.crop_face(path + '/' + item)
 
 
-def clean_crop(path):
-    directory = os.listdir(path)
-    os.chdir(path)
-    for subdirectory in directory:
-        if not os.path.isdir(subdirectory):
-            continue
-        new_directory = os.listdir(subdirectory)
-        for item in new_directory:
-            if not item.endswith(".jpg"):
-                os.remove(path + '/'+subdirectory+'/'+item)
-            else:
-                ai_with_cv.number_of_faces(path + '/'+subdirectory+'/'+item)
-        # I have to listdir again because of the deletions
-        new_directory = os.listdir(subdirectory)
-        for item in new_directory:
-            ai_with_cv.crop_face(path + '/'+subdirectory+'/'+item)
+def select_dataset():
+    print("Please, select the number corresponding to the username of this dataset, if this user is not on this "
+          "list type \"n\"")
+    i = 0
+    num_name = {}
+    for name in os.listdir("./profiledata/"):
+        if os.path.isdir("./profiledata/" + name):
+            i += 1
+            num_name[i] = name
+            print(i, name)
+    option = input(">>")
+    while True:
+        if option == "n":
+            new_path = input("Introduce the new username: ")
+            break
+        elif int(option) in num_name:
+            new_path = num_name[int(option)]
+            break
+        else:
+            option = input("Please, introduce a valid option: ")
+    return new_path
 
 
 def main():
