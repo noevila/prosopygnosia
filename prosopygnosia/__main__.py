@@ -1,6 +1,10 @@
 import os
-from prosopygnosia.instagram_functions import instagram_download
-from prosopygnosia.artificial_intelligence import ai_with_cv
+
+from prosopygnosia.instagram_and_os import instagram_download, os_functions
+from prosopygnosia.artificial_intelligence import ai_with_cv, faces
+
+dictionary = None
+
 
 if __name__ == '__main__':
     def menu():
@@ -8,8 +12,9 @@ if __name__ == '__main__':
         print("Welcome to ProsoPygnosia, please select an option")
         print("\t1 - Download and train Instagram Dataset")
         print("\t2 - Select your own dataset")
-        print("\t3 - Open Webcam Recognition")
-        print("\t4 - Testing")
+        print("\t3 - Open Webcam (Need a trained file before)")
+        print("\t4 - Train")
+        print("\t5 - New user")
         print("\t8 - Help")
         print("\t9 - Exit")
 
@@ -19,31 +24,34 @@ if __name__ == '__main__':
         optionMenu = input("Please, insert your option >> ")
         if optionMenu == "1":
             print("")
-            #os.system('clear')
+            os.system('clear')
             instagram_download.main()
         elif optionMenu == "2":
             print("")
-            # Not implemented yet
             os.system('clear')
             path = input("Please introduce the path of the dataset or drop it here: ")
-            session_name = instagram_download.select_dataset()
+            session_name = os_functions.select_dataset()
             dest = './profiledata/' + session_name
             if not os.path.isdir(dest):
                 os.mkdir(dest)
-            instagram_download.copy_images_from_path(path, dest)
+            os_functions.copy_images_from_path(path, dest)
         elif optionMenu == "3":
             print("")
             os.system('clear')
-            ai_with_cv.cam_recognition()
+            if dictionary is None:
+                print("First you must train the AI, press return to go back...")
+                input("")
+            else:
+                ai_with_cv.cam_recognition_with_ai(dictionary)
         elif optionMenu == "4":
             print("")
             os.system('clear')
             dictionary = ai_with_cv.train_ai('profiledata')
-            ai_with_cv.cam_recognition_with_ai(dictionary)
         elif optionMenu == "5":
             print("")
             os.system('clear')
-            instagram_download.clean_and_crop('../profiledata')
+            new_user = input("Introduce your new face registration: ")
+            faces.register_new_faces('./profiledata/' + new_user)
         elif optionMenu == "8":
             os.system('clear')
             input("Welcome to the help section. \n You must teach this program which of your friends is relationed with"
