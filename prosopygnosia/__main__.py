@@ -15,6 +15,7 @@ if __name__ == '__main__':
         print("\t3 - Open Webcam (Need a trained file before)")
         print("\t4 - Train")
         print("\t5 - New user")
+        print("\t6 - Emotion Recognition")
         print("\t8 - Help")
         print("\t9 - Exit")
 
@@ -52,6 +53,10 @@ if __name__ == '__main__':
             os.system('clear')
             new_user = input("Introduce your new face registration: ")
             faces.register_new_faces('./profiledata/' + new_user)
+        elif optionMenu == "6":
+            print("")
+            os.system('clear')
+            ai_with_cv.emotion_recognition()
         elif optionMenu == "8":
             os.system('clear')
             input("Welcome to the help section. \n You must teach this program which of your friends is relationed with"
