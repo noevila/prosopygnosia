@@ -80,7 +80,6 @@ def emotion_recognition():
             break
     cam.release()
     cv2.destroyAllWindows()
-    exit()
 
 
 def cam_recognition_with_ai(usernames_ids):
@@ -117,7 +116,6 @@ def cam_recognition_with_ai(usernames_ids):
             break
     cam.release()
     cv2.destroyAllWindows()
-    exit()
 
 
 

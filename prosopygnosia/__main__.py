@@ -76,3 +76,4 @@ if __name__ == '__main__':
         else:
             print("")
             input("Please, choose one of the options showed below. Press return to continue.")
+    exit()

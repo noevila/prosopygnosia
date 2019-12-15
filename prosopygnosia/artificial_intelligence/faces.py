@@ -30,7 +30,7 @@ def register_new_faces(new_user):
                     cv2.imwrite(filename, img)
                     os.system('clear')
                     print("Please, move your face to get different angles")
-                    print("Loading new face: ", i, "% saved...")
+                    print("Loading new face: ", i/10, "% saved...")
         if i == FACESPERUSER:
             break
     cam.release()
