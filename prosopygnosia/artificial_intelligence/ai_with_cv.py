@@ -65,13 +65,11 @@ def emotion_recognition():
             for (x, y, w, h) in faces:
                 roi_gray = greyscale[y:y + h, x:x + w]
                 cropped_img = np.expand_dims(np.expand_dims(cv2.resize(roi_gray, (48, 48)), -1), 0)
-                cv2.normalize(cropped_img, cropped_img, alpha=0, beta=1, norm_type=cv2.NORM_L2, dtype=cv2.CV_32F)
                 cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
                 # predicting the emotion
                 yhat = loaded_model.predict(cropped_img)
                 cv2.putText(img, labels[int(np.argmax(yhat))], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
                             (0, 255, 0), 1, cv2.LINE_AA)
-                print("Emotion: " + labels[int(np.argmax(yhat))])
             cv2.imshow('img', img)
         # Press q for quitting the whole program
         # This decision was made because of a bug with my version of python in macOs, it's possible to

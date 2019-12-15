@@ -1,32 +1,20 @@
-# Proso*Py*gnosia _(Pre-Project)_
-Pre-project of a program written in python that helps people with prosopagnosia.
+# Live Facial Recognition and Emotion Identification with Python and OpenCV
+
 
 ## The Project
 
-#### What's prosopagnosia?
+This project consists on implementing live facial recognition and emotion identification with Python 3
 
-Prosopagnosia, also called face blindness, is a cognitive disorder of face perception in which the ability to recognize 
-familiar faces, including one's own face (self-recognition), is impaired, while other aspects of visual processing 
-(e.g., object discrimination) and intellectual functioning (e.g., decision-making) remain intact. The term originally 
-referred to a condition following acute brain damage (acquired prosopagnosia), but a congenital or developmental form of
- the disorder also exists, which may affect up to 2.5% of people.
-In addition, apperceptive sub-types of prosopagnosia struggle recognizing facial emotion.
-### What will be ProsoPygnosia?
+## Tools, libraries and important APIS that are used on this program
 
-The initial idea of ProsoPygnosia it's that this will be a program writen in Python that helps people with propagnosia
-recognising persons that the user with prosopagnosia has as friends on social networks.
-The first idea is to work with Instagram as a social network, but due to the recent changes of Instagram's 
-API and future terms and conditions it exists the posibilit that this program ends working with another 
-social network and not with Instagram.
+### OpenCV
 
-### How ProsoPygnosia will works?
-
-The main idea is to download Instagram photos of the people that the user follows, then recognise the faces of the
-this followers and relation it with their username and showing this relation to the user.
-Once this will be implemented the second part of this app will be the emotional recognition with the faces.
+OpenCV (Open source computer vision) is a library of programming functions mainly aimed at real-time computer vision.
 
 
-## Tools, libraries and important APIS that are gonna be used
+### Keras and Tensorflow
+
+Keras is the high level API of Tensorflow, used for make and train deep learning models.
 
 
 ### ~~Instagram API~~
@@ -61,6 +49,11 @@ discontinued in favor of the Instagram Basic Display API.
 * allows fine-grained customization of filters and where to store downloaded media.
 
 
+### Numpy
+
+NumPy is the fundamental package for scientific computing with Python
+
+
 ### fer2013
 
 Dataset for faces, it will be used for the emotional recognition.
@@ -72,6 +65,14 @@ Dataset for faces, it will be used for the emotional recognition.
 
 ## Licenses
 
+OpenCV license:
+
+https://opencv.org/license/
+
+Keras and Tensorflow license:
+
+https://github.com/keras-team/keras/blob/master/LICENSE
+
 ~~Instagram API license:~~
 
 ~~https://www.instagram.com/about/legal/terms/api/~~
@@ -80,13 +81,16 @@ Instaloader license:
 
 https://github.com/instaloader/instaloader/blob/master/LICENSE
 
-Fer2013 license:
+Numpy license:
+
+https://numpy.org/license.html
+
+fer2013 license:
 
 https://creativecommons.org/publicdomain/zero/1.0/
 
 ## Acknowledgments
 
-* https://en.wikipedia.org/wiki/Prosopagnosia
 * https://github.com/ageitgey/face_recognition
 * https://www.instagram.com/developer/
 * https://www.kaggle.com/deadskull7/fer2013
