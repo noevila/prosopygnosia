@@ -68,8 +68,8 @@ def emotion_recognition():
                 cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
                 # predicting the emotion
                 yhat = loaded_model.predict(cropped_img)
-                cv2.putText(img, labels[int(np.argmax(yhat))], (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
-                            (0, 255, 0), 1, cv2.LINE_AA)
+                cv2.putText(img, labels[int(np.argmax(yhat))], (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9,
+                            (36, 255, 12), 2)
             cv2.imshow('img', img)
         # Press q for quitting the whole program
         # This decision was made because of a bug with my version of python in macOs, it's possible to

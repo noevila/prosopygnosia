@@ -3,7 +3,7 @@
 
 ## The Project
 
-This project consists on implementing live facial recognition and emotion identification with Python 3
+This project consists of implementing live facial recognition and emotion identification with Python 3
 
 ## Tools, libraries and important APIS that are used on this program
 
